@@ -1,0 +1,58 @@
+import { CategoryInfo } from "@/types";
+
+export const productCategories: CategoryInfo[] = [
+  {
+    id: "solar-panels",
+    name: "Solar Panels",
+    slug: "solar-panels",
+    shortDescription: "High-efficiency Monocrystalline Tier-1 PV Modules engineered for maximum generation in Bangladesh's climate.",
+    description: "Our range of Tier-1 Monocrystalline PERC and N-Type TOPCon solar modules offer industry-leading conversion efficiencies, superior low-light performance, and robust resistance to tropical heat and humidity.",
+    iconName: "Sun",
+    itemCount: 4,
+  },
+  {
+    id: "solar-inverters",
+    name: "Solar Inverters",
+    slug: "solar-inverters",
+    shortDescription: "On-grid, off-grid, and intelligent hybrid inverters with advanced MPPT tracking and remote monitoring.",
+    description: "Reliable power conversion units suitable for grid-tied net metering, standalone backup, and hybrid storage systems with seamless grid synchronization and surge protection.",
+    iconName: "Zap",
+    itemCount: 3,
+  },
+  {
+    id: "solar-batteries",
+    name: "Energy Storage & Batteries",
+    slug: "solar-batteries",
+    shortDescription: "Long-lifespan Lithium LiFePO4 and Deep-Cycle Tubular Gel batteries for dependable power backup.",
+    description: "High-capacity energy storage solutions designed for extended cycle life, high depth-of-discharge (DoD), and thermal stability during frequent power cuts and heavy cycling.",
+    iconName: "BatteryCharging",
+    itemCount: 3,
+  },
+  {
+    id: "charge-controllers",
+    name: "Solar Charge Controllers",
+    slug: "charge-controllers",
+    shortDescription: "Intelligent MPPT & PWM charge controllers optimizing battery life and charging efficiency.",
+    description: "Precision battery charging controllers equipped with maximum power point tracking (MPPT) algorithms to extract up to 30% more energy from solar arrays.",
+    iconName: "Sliders",
+    itemCount: 2,
+  },
+  {
+    id: "mounting-structures",
+    name: "Mounting & Racking Systems",
+    slug: "mounting-structures",
+    shortDescription: "Corrosion-resistant anodized aluminum and HDG steel mounting structures designed for cyclone-zone wind loads.",
+    description: "Engineered rooftop and ground-mount racking systems offering quick installation, waterproofing integrity, and 150+ km/h wind resistance.",
+    iconName: "ShieldCheck",
+    itemCount: 2,
+  },
+  {
+    id: "solar-cables-accessories",
+    name: "Cables & Protection Accessories",
+    slug: "solar-cables-accessories",
+    shortDescription: "TUV-certified DC solar cables, MC4 connectors, DC surge protectors (SPD), and isolator switches.",
+    description: "Industrial-grade electrical balance of system (BOS) components ensuring fire safety, UV resistance, and minimal voltage drop across system lifespans.",
+    iconName: "Cpu",
+    itemCount: 2,
+  },
+];

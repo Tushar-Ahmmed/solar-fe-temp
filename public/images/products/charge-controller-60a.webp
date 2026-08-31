@@ -1,0 +1,41 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)" />
+  <rect width="800" height="600" fill="url(#grid)" />
+  
+  <!-- Subtle Solar Grid Graphic -->
+  <g opacity="0.15" stroke="#38bdf8" stroke-width="1.5" fill="none">
+    <polygon points="200,180 600,180 680,380 120,380" />
+    <line x1="200" y1="180" x2="120" y2="380" />
+    <line x1="300" y1="180" x2="260" y2="380" />
+    <line x1="400" y1="180" x2="400" y2="380" />
+    <line x1="500" y1="180" x2="540" y2="380" />
+    <line x1="600" y1="180" x2="680" y2="380" />
+    <line x1="160" y1="280" x2="640" y2="280" />
+  </g>
+
+  <!-- Central Badge -->
+  <rect x="150" y="220" width="500" height="180" rx="16" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.5" />
+  
+  <text x="400" y="270" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#38bdf8" letter-spacing="2">CHARGE CONTROLLERS</text>
+  <text x="400" y="315" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#ffffff">60A MPPT Solar Charge Controller</text>
+  
+  <!-- Accent Line -->
+  <rect x="360" y="345" width="80" height="4" rx="2" fill="url(#accent)" />
+  
+  <!-- Solar Brand watermark -->
+  <text x="400" y="550" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b" letter-spacing="1">SOLARPOWER BANGLADESH • PREMIUM ENERGY</text>
+</svg>
