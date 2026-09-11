@@ -5,6 +5,8 @@ import { siteConfig } from "@/config/site";
 import { blogArticles, getArticleBySlug, getRelatedArticles } from "@/data/blog";
 import { ArticleDetailClient } from "./article-detail-client";
 
+export const dynamic = "force-dynamic";
+
 interface ArticlePageProps {
   params: Promise<{
     slug: string;

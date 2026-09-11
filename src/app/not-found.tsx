@@ -1,10 +1,15 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Sun, Home, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 export default function NotFound() {
+  const { t } = useLanguage();
+
   return (
     <div className="py-20 sm:py-28 bg-slate-50 min-h-[70vh] flex items-center">
       <Container className="max-w-2xl text-center space-y-8">
@@ -14,13 +19,13 @@ export default function NotFound() {
 
         <div className="space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-            404 Page Not Found
+            {t("error404.badge", "404 Page Not Found")}
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            The page you are looking for has moved or does not exist.
+            {t("error404.title", "The page you are looking for has moved or does not exist.")}
           </h1>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            The link you clicked may be broken or the page was renamed. Explore our solar engineering products, services, and guides below.
+            {t("error404.subtitle", "The link you clicked may be broken or the page was renamed. Explore our solar engineering products, services, and guides below.")}
           </p>
         </div>
 
@@ -29,25 +34,25 @@ export default function NotFound() {
             href="/"
             className="p-3 rounded-xl bg-slate-50 hover:bg-sky-50 hover:text-sky-600 font-semibold text-slate-700 transition-colors"
           >
-            Home
+            {t("nav.home", "Home")}
           </Link>
           <Link
             href="/products"
             className="p-3 rounded-xl bg-slate-50 hover:bg-sky-50 hover:text-sky-600 font-semibold text-slate-700 transition-colors"
           >
-            Products
+            {t("nav.products", "Products")}
           </Link>
           <Link
             href="/services"
             className="p-3 rounded-xl bg-slate-50 hover:bg-sky-50 hover:text-sky-600 font-semibold text-slate-700 transition-colors"
           >
-            Services
+            {t("nav.services", "Services")}
           </Link>
           <Link
             href="/why-solar"
             className="p-3 rounded-xl bg-slate-50 hover:bg-sky-50 hover:text-sky-600 font-semibold text-slate-700 transition-colors"
           >
-            Why Solar
+            {t("nav.whySolar", "Why Solar")}
           </Link>
         </div>
 
@@ -58,7 +63,7 @@ export default function NotFound() {
             href="/"
             leftIcon={<Home className="h-4 w-4" />}
           >
-            Return to Homepage
+            {t("error404.homeCta", "Return to Homepage")}
           </Button>
           <Button
             variant="outline"
@@ -66,7 +71,7 @@ export default function NotFound() {
             href="/contact"
             rightIcon={<ArrowRight className="h-4 w-4" />}
           >
-            Contact Engineering Desk
+            {t("error404.contactCta", "Contact Engineering Desk")}
           </Button>
         </div>
       </Container>

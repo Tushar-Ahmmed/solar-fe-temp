@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Sun, Phone, Mail, MapPin, Clock, MessageSquare, ArrowRight, ShieldCheck } from "lucide-react";
@@ -5,11 +7,13 @@ import { siteConfig } from "@/config/site";
 import { productCategories } from "@/data/categories";
 import { servicesData } from "@/data/services";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
+import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 
 export function Footer() {
   const whatsappUrl = generateWhatsAppLink();
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-slate-950 text-slate-400 text-sm border-t border-slate-800">
@@ -22,8 +26,8 @@ export function Footer() {
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-white text-base">Tier-1 Guaranteed PV Modules</h4>
-                <p className="text-xs text-slate-400 mt-0.5">25 to 30 Years linear power warranty</p>
+                <h4 className="font-semibold text-white text-base">{t("footer.pillar1Title", "Tier-1 Guaranteed PV Modules")}</h4>
+                <p className="text-xs text-slate-400 mt-0.5">{t("footer.pillar1Desc", "25 to 30 Years linear power warranty")}</p>
               </div>
             </div>
 
@@ -32,8 +36,8 @@ export function Footer() {
                 <Sun className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-white text-base">Net Metering Integration</h4>
-                <p className="text-xs text-slate-400 mt-0.5">DESCO, DPDC, BREB & NESCO approvals</p>
+                <h4 className="font-semibold text-white text-base">{t("footer.pillar2Title", "Net Metering Integration")}</h4>
+                <p className="text-xs text-slate-400 mt-0.5">{t("footer.pillar2Desc", "DESCO, DPDC, BREB & NESCO approvals")}</p>
               </div>
             </div>
 
@@ -42,8 +46,8 @@ export function Footer() {
                 <MessageSquare className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-white text-base">Dedicated Solar Support</h4>
-                <p className="text-xs text-slate-400 mt-0.5">Direct WhatsApp & phone technical assistance</p>
+                <h4 className="font-semibold text-white text-base">{t("footer.pillar3Title", "Dedicated Solar Support")}</h4>
+                <p className="text-xs text-slate-400 mt-0.5">{t("footer.pillar3Desc", "Direct WhatsApp & phone technical assistance")}</p>
               </div>
             </div>
           </div>
@@ -77,7 +81,7 @@ export function Footer() {
               {/* Service Areas */}
               <div className="pt-2">
                 <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider block mb-2">
-                  Service Coverage in Bangladesh:
+                  {t("footer.coverageTitle", "Service Coverage in Bangladesh:")}
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {siteConfig.serviceAreas.map((area, idx) => (
@@ -95,7 +99,7 @@ export function Footer() {
             {/* Col 3: Products */}
             <div className="space-y-3">
               <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                Solar Products
+                {t("footer.productsTitle", "Solar Products")}
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm">
                 {productCategories.map((cat) => (
@@ -115,7 +119,7 @@ export function Footer() {
             {/* Col 4: Services */}
             <div className="space-y-3">
               <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                Engineering Services
+                {t("footer.servicesTitle", "Engineering Services")}
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm">
                 {servicesData.slice(0, 5).map((serv) => (
@@ -135,7 +139,7 @@ export function Footer() {
             {/* Col 5: Contact & Office */}
             <div className="space-y-3">
               <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                Contact & Support
+                {t("footer.contactTitle", "Contact & Support")}
               </h4>
               <ul className="space-y-3 text-xs sm:text-sm">
                 <li className="flex items-start gap-2.5">
@@ -161,7 +165,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="hover:text-emerald-400 transition-colors"
                   >
-                    WhatsApp: {siteConfig.whatsapp}
+                    {t("footer.whatsappLabel", "WhatsApp")}: {siteConfig.whatsapp}
                   </a>
                 </li>
                 <li className="flex items-center gap-2.5">
@@ -191,21 +195,21 @@ export function Footer() {
       <div className="border-t border-slate-900 py-6 bg-slate-950">
         <Container className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            © {currentYear} {siteConfig.legalName}. All rights reserved. Operating across Bangladesh.
+            © {currentYear} {siteConfig.legalName}. {t("footer.rights", "All rights reserved. Operating across Bangladesh.")}
           </p>
 
           <div className="flex items-center gap-6">
             <Link href="/why-solar" className="hover:text-slate-400 transition-colors">
-              Why Solar
+              {t("nav.whySolar", "Why Solar")}
             </Link>
             <Link href="/why-us" className="hover:text-slate-400 transition-colors">
-              Why Choose Us
+              {t("nav.whyUs", "Why Choose Us")}
             </Link>
             <Link href="/blog" className="hover:text-slate-400 transition-colors">
-              Solar Guides
+              {t("nav.blog", "Solar Guides")}
             </Link>
             <Link href="/contact" className="hover:text-slate-400 transition-colors">
-              Contact
+              {t("nav.contact", "Contact")}
             </Link>
           </div>
         </Container>

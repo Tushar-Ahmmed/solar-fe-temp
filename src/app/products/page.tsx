@@ -4,6 +4,8 @@ import { siteConfig } from "@/config/site";
 import { productsData } from "@/data/products";
 import { ProductsClient } from "./products-client";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Solar Products & Equipment Catalog | Solar Panels, Inverters, Batteries Bangladesh",
   description:

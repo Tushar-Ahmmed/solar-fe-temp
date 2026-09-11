@@ -15,6 +15,7 @@ import {
 import { siteConfig } from "@/config/site";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 interface ContactFormData {
   name: string;
@@ -29,6 +30,7 @@ interface ContactFormData {
 
 function ContactFormContent() {
   const searchParams = useSearchParams();
+  const { t } = useLanguage();
   const prefilledProduct = searchParams.get("product") || "";
   const prefilledService = searchParams.get("service") || "";
 
@@ -50,17 +52,27 @@ function ContactFormContent() {
     if (prefilledProduct) {
       setFormData((prev) => ({
         ...prev,
-        interestedIn: `Product: ${prefilledProduct}`,
-        message: prev.message || `I would like to request an official quotation and availability for the "${prefilledProduct}".`,
+        interestedIn: `${t("form.prefilledProduct", "Product")}: ${prefilledProduct}`,
+        message:
+          prev.message ||
+          t(
+            "form.prefilledProductMessage",
+            `I would like to request an official quotation and availability for the "${prefilledProduct}".`
+          ),
       }));
     } else if (prefilledService) {
       setFormData((prev) => ({
         ...prev,
-        interestedIn: `Service: ${prefilledService}`,
-        message: prev.message || `I am interested in scheduling a technical consultation for "${prefilledService}".`,
+        interestedIn: `${t("form.prefilledService", "Service")}: ${prefilledService}`,
+        message:
+          prev.message ||
+          t(
+            "form.prefilledServiceMessage",
+            `I am interested in scheduling a technical consultation for "${prefilledService}".`
+          ),
       }));
     }
-  }, [prefilledProduct, prefilledService]);
+  }, [prefilledProduct, prefilledService, t]);
 
   const formattedInquiryText = `*Solar Inquiry — ${siteConfig.name}*
 • *Customer Name:* ${formData.name || "N/A"}
@@ -102,6 +114,14 @@ function ContactFormContent() {
     setSubmitted(true);
   };
 
+  const handleInvalid = (event: React.InvalidEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    event.currentTarget.setCustomValidity(t("form.validation.required", "Please fill in this field."));
+  };
+
+  const clearInvalid = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    event.currentTarget.setCustomValidity("");
+  };
+
   const handleCopySummary = () => {
     if (typeof window !== "undefined") {
       navigator.clipboard.writeText(formattedInquiryText);
@@ -119,10 +139,10 @@ function ContactFormContent() {
           </div>
           <div className="space-y-1">
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-              Inquiry Summary Ready
+              {t("form.summaryTitle", "Inquiry Summary Ready")}
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Your inquiry details for <strong className="text-slate-800">{formData.name}</strong> have been formatted. Connect directly through your preferred channel:
+              {t("form.summaryDesc", "Your inquiry details for")} <strong className="text-slate-800">{formData.name}</strong> {t("form.summaryDesc2", "have been formatted. Connect directly through your preferred channel:")}
             </p>
           </div>
         </div>
@@ -131,7 +151,7 @@ function ContactFormContent() {
         <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 font-mono text-xs text-slate-800 space-y-2 relative">
           <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
             <span className="font-bold text-slate-700 text-[11px] uppercase tracking-wider">
-              Structured Inquiry Payload
+              {t("form.payloadLabel", "Structured Inquiry Payload")}
             </span>
             <button
               onClick={handleCopySummary}
@@ -140,12 +160,12 @@ function ContactFormContent() {
               {copiedSummary ? (
                 <>
                   <Check className="h-3 w-3 text-emerald-600" />
-                  <span className="text-emerald-600">Copied!</span>
+                  <span className="text-emerald-600">{t("form.copied", "Copied!")}</span>
                 </>
               ) : (
                 <>
                   <Copy className="h-3 w-3" />
-                  <span>Copy Text</span>
+                  <span>{t("form.copyText", "Copy Text")}</span>
                 </>
               )}
             </button>
@@ -164,7 +184,7 @@ function ContactFormContent() {
             className="w-full justify-center font-bold shadow-md"
             leftIcon={<MessageSquare className="h-4 w-4" />}
           >
-            Dispatch to WhatsApp Desk
+            {t("form.dispatchWhatsApp", "Dispatch to WhatsApp Desk")}
           </Button>
 
           <Button
@@ -174,7 +194,7 @@ function ContactFormContent() {
             className="w-full justify-center font-bold shadow-md"
             leftIcon={<Mail className="h-4 w-4" />}
           >
-            Send via Official Email
+            {t("form.dispatchEmail", "Send via Official Email")}
           </Button>
         </div>
 
@@ -182,10 +202,10 @@ function ContactFormContent() {
         <div className="p-4 rounded-2xl bg-sky-50/70 border border-sky-100 text-xs text-slate-600 space-y-1.5">
           <div className="flex items-center gap-1.5 font-bold text-sky-900 text-[11px] uppercase tracking-wider">
             <Code2 className="h-3.5 w-3.5 text-sky-600" />
-            Backend API Contract Ready
+            {t("form.apiLabel", "Backend API Contract Ready")}
           </div>
           <p className="text-[11px] text-slate-600 leading-relaxed">
-            In full production deployment, this client form dispatches to <code className="px-1.5 py-0.5 rounded bg-white border border-sky-200 font-mono text-sky-800 text-[10px]">POST /api/v1/leads/inquiries</code> to auto-generate CRM tickets in the solar management system.
+            {t("form.apiDesc", "In full production deployment, this client form dispatches to")} <code className="px-1.5 py-0.5 rounded bg-white border border-sky-200 font-mono text-sky-800 text-[10px]">POST /api/v1/leads/inquiries</code> {t("form.apiDesc2", "to auto-generate CRM tickets in the solar management system.")}
           </p>
         </div>
 
@@ -196,7 +216,7 @@ function ContactFormContent() {
             onClick={() => setSubmitted(false)}
             className="text-xs text-slate-500"
           >
-            ← Modify / Submit Another Request
+            {t("form.modifyBtn", "← Modify / Submit Another Request")}
           </Button>
         </div>
       </div>
@@ -212,14 +232,14 @@ function ContactFormContent() {
         {(prefilledProduct || prefilledService) && (
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold mb-2">
             <Sparkles className="h-3.5 w-3.5 text-amber-600" />
-            Inquiry for: {prefilledProduct || prefilledService}
+            {t("form.inquiryBadge", "Inquiry for:")} {prefilledProduct || prefilledService}
           </div>
         )}
         <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-          Request a Free Solar Site Survey & Quotation
+          {t("form.title", "Request a Free Solar Site Survey & Quotation")}
         </h3>
         <p className="text-xs sm:text-sm text-slate-500">
-          Fill in your details below. Our Dhaka engineering team prepares detailed load estimations and single-line diagrams.
+          {t("form.subtitle", "Fill in your details below. Our Dhaka engineering team prepares detailed load estimations and single-line diagrams.")}
         </p>
       </div>
 
@@ -227,7 +247,7 @@ function ContactFormContent() {
         {/* Full Name */}
         <div className="space-y-1.5">
           <label htmlFor="contact-name" className="text-xs font-bold text-slate-700">
-            Full Name <span className="text-rose-500">*</span>
+            {t("form.fullName", "Full Name")} <span className="text-rose-500">*</span>
           </label>
           <input
             id="contact-name"
@@ -236,8 +256,10 @@ function ContactFormContent() {
             type="text"
             required
             aria-required="true"
-            placeholder="e.g. Tushar Ahmed"
+            placeholder={t("form.namePlaceholder", "e.g. Tushar Ahmed")}
             value={formData.name}
+            onInvalid={handleInvalid}
+            onInput={clearInvalid}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 focus:bg-white transition-all"
           />
@@ -246,7 +268,7 @@ function ContactFormContent() {
         {/* Phone Number */}
         <div className="space-y-1.5">
           <label htmlFor="contact-phone" className="text-xs font-bold text-slate-700">
-            Phone / WhatsApp Number <span className="text-rose-500">*</span>
+            {t("form.phone", "Phone / WhatsApp Number")} <span className="text-rose-500">*</span>
           </label>
           <input
             id="contact-phone"
@@ -255,8 +277,10 @@ function ContactFormContent() {
             type="tel"
             required
             aria-required="true"
-            placeholder="e.g. +880 17XX-XXXXXX"
+            placeholder={t("form.phonePlaceholder", "e.g. +880 17XX-XXXXXX")}
             value={formData.phone}
+            onInvalid={handleInvalid}
+            onInput={clearInvalid}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 focus:bg-white transition-all"
           />
@@ -267,15 +291,17 @@ function ContactFormContent() {
         {/* Email */}
         <div className="space-y-1.5">
           <label htmlFor="contact-email" className="text-xs font-bold text-slate-700">
-            Email Address (Optional)
+            {t("form.email", "Email Address (Optional)")}
           </label>
           <input
             id="contact-email"
             name="email"
             autoComplete="email"
             type="email"
-            placeholder="e.g. name@company.com"
+            placeholder={t("form.emailPlaceholder", "e.g. name@company.com")}
             value={formData.email}
+            onInvalid={handleInvalid}
+            onInput={clearInvalid}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 focus:bg-white transition-all"
           />
@@ -284,20 +310,22 @@ function ContactFormContent() {
         {/* Property Type */}
         <div className="space-y-1.5">
           <label htmlFor="contact-property-type" className="text-xs font-bold text-slate-700">
-            Property / Project Type <span className="text-rose-500">*</span>
+            {t("form.propertyType", "Property / Project Type")} <span className="text-rose-500">*</span>
           </label>
           <select
             id="contact-property-type"
             name="propertyType"
             value={formData.propertyType}
+            onInvalid={handleInvalid}
+            onInput={clearInvalid}
             onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
             className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 focus:bg-white transition-all"
           >
-            <option value="residential">Residential (Home / Duplex / Apartment)</option>
-            <option value="commercial">Commercial Building / Office</option>
-            <option value="industrial">Industrial Factory / RMG Mill</option>
-            <option value="agricultural">Agro-farm / Solar Water Pump</option>
-            <option value="maintenance">Maintenance of Existing Plant</option>
+            <option value="residential">{t("form.propertyResidential", "Residential (Home / Duplex / Apartment)")}</option>
+            <option value="commercial">{t("form.propertyCommercial", "Commercial Building / Office")}</option>
+            <option value="industrial">{t("form.propertyIndustrial", "Industrial Factory / RMG Mill")}</option>
+            <option value="agricultural">{t("form.propertyAgro", "Agro-farm / Solar Water Pump")}</option>
+            <option value="maintenance">{t("form.propertyMaintenance", "Maintenance of Existing Plant")}</option>
           </select>
         </div>
       </div>
@@ -306,14 +334,16 @@ function ContactFormContent() {
         {/* Monthly Electricity Bill */}
         <div className="space-y-1.5">
           <label htmlFor="contact-bill" className="text-xs font-bold text-slate-700">
-            Avg. Monthly Electricity Bill (BDT)
+            {t("form.monthlyBill", "Avg. Monthly Electricity Bill (BDT)")}
           </label>
           <input
             id="contact-bill"
             name="monthlyBill"
             type="text"
-            placeholder="e.g. BDT 15,000 / month"
+            placeholder={t("form.billPlaceholder", "e.g. BDT 15,000 / month")}
             value={formData.monthlyBill}
+            onInvalid={handleInvalid}
+            onInput={clearInvalid}
             onChange={(e) => setFormData({ ...formData, monthlyBill: e.target.value })}
             className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 focus:bg-white transition-all"
           />
@@ -322,23 +352,25 @@ function ContactFormContent() {
         {/* Location / Division */}
         <div className="space-y-1.5">
           <label htmlFor="contact-division" className="text-xs font-bold text-slate-700">
-            Project Location / Division <span className="text-rose-500">*</span>
+            {t("form.division", "Project Location / Division")} <span className="text-rose-500">*</span>
           </label>
           <select
             id="contact-division"
             name="division"
             value={formData.division}
+            onInvalid={handleInvalid}
+            onInput={clearInvalid}
             onChange={(e) => setFormData({ ...formData, division: e.target.value })}
             className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 focus:bg-white transition-all"
           >
-            <option value="Dhaka">Dhaka Division (Dhaka, Gazipur, Narayanganj)</option>
-            <option value="Chittagong">Chittagong Division</option>
-            <option value="Sylhet">Sylhet Division</option>
-            <option value="Rajshahi">Rajshahi Division</option>
-            <option value="Rangpur">Rangpur Division</option>
-            <option value="Khulna">Khulna Division</option>
-            <option value="Barishal">Barishal Division</option>
-            <option value="Mymensingh">Mymensingh Division</option>
+            <option value="Dhaka">{t("form.dhakaDivision", "Dhaka Division (Dhaka, Gazipur, Narayanganj)")}</option>
+            <option value="Chittagong">{t("form.chittagongDivision", "Chittagong Division")}</option>
+            <option value="Sylhet">{t("form.sylhetDivision", "Sylhet Division")}</option>
+            <option value="Rajshahi">{t("form.rajshahiDivision", "Rajshahi Division")}</option>
+            <option value="Rangpur">{t("form.rangpurDivision", "Rangpur Division")}</option>
+            <option value="Khulna">{t("form.khulnaDivision", "Khulna Division")}</option>
+            <option value="Barishal">{t("form.barishalDivision", "Barishal Division")}</option>
+            <option value="Mymensingh">{t("form.mymensinghDivision", "Mymensingh Division")}</option>
           </select>
         </div>
       </div>
@@ -346,14 +378,16 @@ function ContactFormContent() {
       {/* Specific Requirements / Notes */}
       <div className="space-y-1.5">
         <label htmlFor="contact-message" className="text-xs font-bold text-slate-700">
-          Specific Requirements / Notes
+          {t("form.message", "Specific Requirements / Notes")}
         </label>
         <textarea
           id="contact-message"
           name="message"
           rows={3}
-          placeholder="Mention your roof size, backup load requirements (ACs, refrigerators), or net metering sanction details..."
+          placeholder={t("form.messagePlaceholder", "Mention your roof size, backup load requirements (ACs, refrigerators), or net metering sanction details...")}
           value={formData.message}
+          onInvalid={handleInvalid}
+          onInput={clearInvalid}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 focus:bg-white resize-none transition-all"
         />
@@ -368,7 +402,7 @@ function ContactFormContent() {
           className="flex-1 justify-center shadow-md font-bold cursor-pointer"
           leftIcon={<Send className="h-4 w-4" />}
         >
-          Review & Submit Proposal Request
+          {t("form.submit", "Review & Submit Proposal Request")}
         </Button>
         <Button
           type="button"
@@ -378,12 +412,12 @@ function ContactFormContent() {
           className="flex-1 justify-center shadow-md font-bold cursor-pointer"
           leftIcon={<MessageSquare className="h-4 w-4" />}
         >
-          Send via WhatsApp Instantly
+          {t("form.sendWhatsApp", "Send via WhatsApp Instantly")}
         </Button>
       </div>
 
       <div className="text-center text-[11px] text-slate-400">
-        We respect your privacy. Your contact info is strictly used for feasibility and quote preparation.
+        {t("form.privacy", "We respect your privacy. Your contact info is strictly used for feasibility and quote preparation.")}
       </div>
     </form>
   );

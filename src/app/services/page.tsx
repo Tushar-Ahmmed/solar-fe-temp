@@ -4,6 +4,8 @@ import { siteConfig } from "@/config/site";
 import { servicesData } from "@/data/services";
 import { ServicesClient } from "./services-client";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Solar Engineering, EPC & Net Metering Services Bangladesh",
   description:
