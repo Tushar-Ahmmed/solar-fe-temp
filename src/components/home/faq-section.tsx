@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import { ChevronDown, HelpCircle, MessageSquare } from "lucide-react";
 import { faqsData } from "@/data/faqs";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
+import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
+import { TranslationKey } from "@/lib/i18n/translations";
 
 export function FAQSection() {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const whatsappUrl = generateWhatsAppLink({
     inquiryType: "technical",
@@ -22,14 +25,19 @@ export function FAQSection() {
     <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200">
       <Container size="md">
         <SectionHeader
-          badge="Frequently Asked Questions"
-          title="Common Questions About Solar in Bangladesh"
-          subtitle="Everything you need to know about system reliability, cloudy monsoon generation, utility approvals, and cost savings."
+          badge={t("faq.badge", "Frequently Asked Questions")}
+          title={t("faq.title", "Everything You Need to Know About Solar in Bangladesh")}
+          subtitle={t(
+            "faq.subtitle",
+            "Clear, direct answers about costs, warranties, load shedding backup, and government net metering policies."
+          )}
         />
 
         <div className="space-y-3.5">
           {faqsData.map((faq, idx) => {
             const isOpen = openIndex === idx;
+            const qKey = `faq.${faq.id}.q` as TranslationKey;
+            const aKey = `faq.${faq.id}.a` as TranslationKey;
 
             return (
               <div
@@ -44,7 +52,7 @@ export function FAQSection() {
                 >
                   <span className="flex items-center gap-3 text-sm sm:text-base pr-4">
                     <HelpCircle className="h-4 w-4 text-sky-500 shrink-0" />
-                    {faq.question}
+                    {t(qKey, faq.question)}
                   </span>
                   <ChevronDown
                     className={`h-4 w-4 text-slate-400 shrink-0 transition-transform duration-200 ${
@@ -55,7 +63,7 @@ export function FAQSection() {
 
                 {isOpen && (
                   <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
-                    {faq.answer}
+                    {t(aKey, faq.answer)}
                   </div>
                 )}
               </div>
@@ -64,9 +72,14 @@ export function FAQSection() {
         </div>
 
         <div className="mt-10 p-6 rounded-2xl bg-sky-50 border border-sky-100 text-center space-y-3">
-          <h4 className="font-bold text-slate-900 text-base">Have a specific technical question?</h4>
+          <h4 className="font-bold text-slate-900 text-base">
+            {t("faqExt.haveMoreQuestions", "Have a specific technical question?")}
+          </h4>
           <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
-            Our certified solar engineers are ready to answer your technical questions via WhatsApp or phone consultation.
+            {t(
+              "contact.responseGuarantee",
+              "Our certified solar engineers are ready to answer your technical questions via WhatsApp or phone consultation."
+            )}
           </p>
           <Button
             variant="whatsapp"
@@ -75,7 +88,7 @@ export function FAQSection() {
             className="inline-flex items-center"
             leftIcon={<MessageSquare className="h-4 w-4" />}
           >
-            Ask an Engineer on WhatsApp
+            {t("faqExt.chatWithEngineer", "Ask an Engineer on WhatsApp")}
           </Button>
         </div>
       </Container>

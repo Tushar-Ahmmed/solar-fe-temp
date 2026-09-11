@@ -1,9 +1,12 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MessageSquare, ShieldCheck, Zap } from "lucide-react";
 import { getFeaturedProducts } from "@/data/products";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
+import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export function FeaturedProducts() {
+  const { t, language } = useLanguage();
   const featuredProducts = getFeaturedProducts();
 
   return (
@@ -18,9 +22,12 @@ export function FeaturedProducts() {
       <Container>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <SectionHeader
-            badge="Featured Equipment"
-            title="Tier-1 Solar Panels, Inverters & Lithium Storage"
-            subtitle="Engineered for maximum kilowatt-hour yield, high temperature resistance, and decades of dependable generation."
+            badge={t("products.badge", "Featured Equipment")}
+            title={t("products.title", "Tier-1 Solar Panels, Inverters & Lithium Storage")}
+            subtitle={t(
+              "products.subtitle",
+              "Engineered for maximum kilowatt-hour yield, high temperature resistance, and decades of dependable generation."
+            )}
             align="left"
             className="mb-0 max-w-2xl"
           />
@@ -28,10 +35,10 @@ export function FeaturedProducts() {
           <Button
             variant="outline"
             href="/products"
-            className="self-start md:self-auto shrink-0"
+            className="self-start md:self-auto shrink-0 font-semibold"
             rightIcon={<ArrowRight className="h-4 w-4" />}
           >
-            Browse All Products
+            {t("products.viewAll", "Browse All Products")}
           </Button>
         </div>
 
@@ -92,13 +99,20 @@ export function FeaturedProducts() {
                     {product.keySpecs.efficiency && (
                       <div className="flex items-center gap-1.5 text-slate-700">
                         <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                        <span className="font-semibold truncate">Eff: {product.keySpecs.efficiency}</span>
+                        <span className="font-semibold truncate">
+                          {t("product.efficiency", "Eff")}: {product.keySpecs.efficiency}
+                        </span>
                       </div>
                     )}
                     {product.keySpecs.warrantyYears && (
                       <div className="flex items-center gap-1.5 text-slate-700 col-span-2">
                         <ShieldCheck className="h-3.5 w-3.5 text-sky-500 shrink-0" />
-                        <span>{product.keySpecs.warrantyYears}-Year Manufacturer Warranty</span>
+                        <span>
+                          {product.keySpecs.warrantyYears}-
+                          {language === "bn"
+                            ? "বছরের প্রস্তুতকারক ওয়ারেন্টি"
+                            : "Year Manufacturer Warranty"}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -109,18 +123,18 @@ export function FeaturedProducts() {
                       variant="outline"
                       size="sm"
                       href={`/products/${product.slug}`}
-                      className="w-full text-xs justify-center"
+                      className="w-full text-xs justify-center font-medium"
                     >
-                      View Specs
+                      {t("products.viewDetails", "View Specs")}
                     </Button>
                     <Button
                       variant="whatsapp"
                       size="sm"
                       href={productWhatsAppUrl}
-                      className="w-full text-xs justify-center"
+                      className="w-full text-xs justify-center font-medium"
                       leftIcon={<MessageSquare className="h-3.5 w-3.5" />}
                     >
-                      Inquire
+                      {t("product.inquireNow", "Inquire")}
                     </Button>
                   </div>
                 </CardContent>

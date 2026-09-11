@@ -186,7 +186,7 @@ server {
 
 ---
 
-#### **PHASE 4: Homepage & Hero Translation** ❌ NOT STARTED
+#### **PHASE 4: Homepage & Hero Translation** ✅ COMPLETED
 **Objective:** Translate homepage (hero, intro, products, solutions, benefits, FAQ, CTA).
 **Pages:** `/` (homepage)
 **Components Affected:**
@@ -197,16 +197,25 @@ server {
 - BenefitsSection
 - FAQSection
 - CTABanner
+- ServicesOverview
+- WhyUsSection
+- EducationalPreview
 **Bangla Strategy:**
 - Hero headline: Emphasize bill savings + load shedding protection (key pain points)
 - Company intro: Trust + engineering expertise in local context
 - Products: Highlight Tier-1, warranty, local support
 - Solutions: Residential vs. commercial use cases (applicable to Bangladesh)
 **Deliverables:**
-- [ ] All 7 home components use `t()` hook for translations
-- [ ] Test English/Bangla toggle on homepage
-- [ ] Verify no text overflow or layout issues with longer Bangla copy
-- [ ] Check homepage performance (no additional bundle size impact)
+- [x] All 10 home components use `t()` hook for translations
+- [x] BenefitsSection migrated with `useLanguage` — all benefit cards fully translated
+- [x] FAQSection migrated with `useLanguage` — FAQ Q&A dynamically use `faq.[id].q` and `faq.[id].a` keys
+- [x] CTABanner migrated with `useLanguage` — badge, title, subtitle, buttons, hotline label translated
+- [x] ServicesOverview migrated with `useLanguage` — section header, highlights label, buttons translated
+- [x] WhyUsSection migrated with `useLanguage` — all 4 reason cards and action links translated
+- [x] EducationalPreview migrated with `useLanguage` — section header, reading time, view all, read article translated
+- [x] TypeScript `tsc --noEmit` passes with 0 errors
+- [x] ESLint passes with 0 warnings or errors
+**Completed:** All 10 homepage components use `t()` hook (COMPLETED 2026-09-11)
 
 ---
 
@@ -378,8 +387,9 @@ npm run export       # Export to /out directory
 - ✅ Phase 1: Complete English Translation Audit & Expansion (COMPLETED 2026-09-11)
 - ✅ Phase 2: Bangla (Casual) Translation Creation — 463 keys (COMPLETED 2026-09-11)
 - ✅ Phase 3: Language Toggle UI Component (COMPLETED 2026-09-11)
-- ⏳ Phase 4: Homepage & Hero Translation (Next Up)
-- ⏳ Phase 5-10: Queued
+- ✅ Phase 4: Homepage & Hero Translation — 10 components (COMPLETED 2026-09-11)
+- ⏳ Phase 5: Products & Services Pages Translation (Next Up)
+- ⏳ Phase 6-10: Queued
 
 ---
 

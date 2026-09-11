@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock, BookOpen } from "lucide-react";
 import { getFeaturedArticles } from "@/data/blog";
+import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export function EducationalPreview() {
+  const { t } = useLanguage();
   const articles = getFeaturedArticles();
 
   return (
@@ -17,9 +21,12 @@ export function EducationalPreview() {
       <Container>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <SectionHeader
-            badge="Solar Knowledge Hub"
-            title="Practical Solar Guides & Technical Insights"
-            subtitle="Learn how solar technology works, calculate your system requirements, and understand Bangladesh net-metering policies."
+            badge={t("blog.badge", "Solar Guide & Knowledge Base")}
+            title={t("blog.title", "Latest Solar Insights & Technical Guides")}
+            subtitle={t(
+              "blog.subtitle",
+              "Authoritative articles on net metering policy, system sizing formulas, and battery chemistry comparisons in Bangladesh."
+            )}
             align="left"
             className="mb-0 max-w-2xl"
           />
@@ -30,7 +37,7 @@ export function EducationalPreview() {
             className="self-start md:self-auto shrink-0"
             rightIcon={<ArrowRight className="h-4 w-4" />}
           >
-            View All Guides
+            {t("blog.viewAll", "Explore All Guides")}
           </Button>
         </div>
 
@@ -61,7 +68,7 @@ export function EducationalPreview() {
                   <div className="flex items-center gap-3 text-xs text-slate-400">
                     <span className="flex items-center gap-1">
                       <Clock className="h-3.5 w-3.5" />
-                      {article.readingTimeMinutes} min read
+                      {article.readingTimeMinutes} {t("blog.readingTime", "min read")}
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
@@ -84,7 +91,7 @@ export function EducationalPreview() {
                     href={`/blog/${article.slug}`}
                     className="text-xs sm:text-sm font-semibold text-sky-600 hover:text-sky-700 transition-colors inline-flex items-center gap-1"
                   >
-                    <span>Read Full Guide</span>
+                    <span>{t("blog.readArticle", "Read Full Guide")}</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>

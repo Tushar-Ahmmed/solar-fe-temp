@@ -1,11 +1,15 @@
+"use client";
+
 import React from "react";
 import { Phone, MessageSquare, ArrowRight, Sun } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
+import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 
 export function CTABanner() {
+  const { t } = useLanguage();
   const whatsappUrl = generateWhatsAppLink({
     inquiryType: "quote",
   });
@@ -19,15 +23,18 @@ export function CTABanner() {
       <Container size="md" className="relative z-10 text-center space-y-6">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-sky-300 text-xs font-semibold uppercase tracking-wider">
           <Sun className="h-3.5 w-3.5 text-amber-300" />
-          Free Rooftop Survey & Feasibility Calculation
+          {t("cta.badge", "Start Saving Today")}
         </div>
 
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white max-w-2xl mx-auto leading-tight">
-          Ready to Slash Your Electricity Bills and Power Your Property with Solar?
+          {t("cta.title", "Ready to Cut Your Electricity Bills with Clean Solar Power?")}
         </h2>
 
         <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
-          Contact our Dhaka engineering team today for a comprehensive 3D shadow analysis, bill savings calculation, and customized equipment proposal.
+          {t(
+            "cta.subtitle",
+            "Contact our Banani, Dhaka engineering team today for a free on-site roof survey, system sizing, and ROI calculation."
+          )}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
@@ -38,7 +45,7 @@ export function CTABanner() {
             className="w-full sm:w-auto"
             rightIcon={<ArrowRight className="h-4 w-4" />}
           >
-            Get a Free System Quote
+            {t("cta.btnSurvey", "Book Free Site Survey")}
           </Button>
 
           <Button
@@ -48,7 +55,7 @@ export function CTABanner() {
             className="w-full sm:w-auto"
             leftIcon={<MessageSquare className="h-4 w-4" />}
           >
-            WhatsApp Consultation
+            {t("cta.btnWhatsApp", "Chat on WhatsApp")}
           </Button>
         </div>
 
@@ -58,10 +65,13 @@ export function CTABanner() {
             className="flex items-center gap-1.5 hover:text-white transition-colors"
           >
             <Phone className="h-3.5 w-3.5 text-sky-400" />
-            <span>Direct Hotline: <strong className="text-white">{siteConfig.phone}</strong></span>
+            <span>
+              {t("cta.hotlineLabel", "Direct Hotline:")}{" "}
+              <strong className="text-white">{siteConfig.phone}</strong>
+            </span>
           </a>
           <span>•</span>
-          <span>Saturday – Thursday: 9:00 AM – 6:00 PM</span>
+          <span>{t("cta.workingHours", "Saturday – Thursday: 9:00 AM – 6:00 PM")}</span>
         </div>
       </Container>
     </section>

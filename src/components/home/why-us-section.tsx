@@ -1,35 +1,48 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ShieldCheck, Cpu, Clock, CheckCircle2, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
 
 export function WhyUsSection() {
+  const { t } = useLanguage();
+
   const reasons = [
     {
       icon: <ShieldCheck className="h-6 w-6 text-sky-400" />,
-      title: "100% Genuine Tier-1 Equipment",
-      description:
-        "Every solar module, inverter, and battery is sourced with verifiable manufacturer serial numbers. No counterfeit panels or downgraded B-grade cells.",
+      title: t("whyUs.card1Title", "100% Genuine Tier-1 Equipment"),
+      description: t(
+        "whyUs.card1Desc",
+        "Every solar module, inverter, and battery is sourced with verifiable manufacturer serial numbers. No counterfeit panels or downgraded B-grade cells."
+      ),
     },
     {
       icon: <Cpu className="h-6 w-6 text-amber-400" />,
-      title: "Engineered 3D Shading Simulation",
-      description:
-        "Our engineers model your exact rooftop orientation, surrounding obstacles, and parapet walls to guarantee optimal tilt angles and realistic generation output.",
+      title: t("whyUs.card2Title", "Engineered 3D Shading Simulation"),
+      description: t(
+        "whyUs.card2Desc",
+        "Our engineers model your exact rooftop orientation, surrounding obstacles, and parapet walls to guarantee optimal tilt angles and realistic generation output."
+      ),
     },
     {
       icon: <Clock className="h-6 w-6 text-emerald-400" />,
-      title: "Local Bangladesh Warranty & Support",
-      description:
-        "We are headquartered in Dhaka with mobile service technicians ready to handle preventative cleaning, thermal audits, and warranty replacements swiftly.",
+      title: t("whyUs.card3Title", "Local Bangladesh Warranty & Support"),
+      description: t(
+        "whyUs.card3Desc",
+        "We are headquartered in Dhaka with mobile service technicians ready to handle preventative cleaning, thermal audits, and warranty replacements swiftly."
+      ),
     },
     {
       icon: <CheckCircle2 className="h-6 w-6 text-cyan-400" />,
-      title: "Transparent & Truthful ROI Projections",
-      description:
-        "We never promise unrealistic 100% free electricity or exaggerated savings. You receive factual, engineered financial and technical feasibility dossiers.",
+      title: t("whyUs.card4Title", "Transparent & Truthful ROI Projections"),
+      description: t(
+        "whyUs.card4Desc",
+        "We never promise unrealistic 100% free electricity or exaggerated savings. You receive factual, engineered financial and technical feasibility dossiers."
+      ),
     },
   ];
 
@@ -37,11 +50,14 @@ export function WhyUsSection() {
     <section className="py-16 sm:py-24 bg-slate-950 text-white border-b border-slate-800">
       <Container>
         <SectionHeader
-          badge="Why Choose Us"
+          badge={t("whyUs.badge", "Why SolarPower BD")}
           badgeVariant="solar"
           isDark
-          title="Engineering Integrity You Can Rely On"
-          subtitle="A solar system is a 25-year infrastructure investment. Partner with an engineering firm committed to technical standards, safety, and authentic equipment."
+          title={t("whyUs.title", "Engineering Standards You Can Trust")}
+          subtitle={t(
+            "whyUs.subtitle",
+            "We set ourselves apart by delivering transparent warranties, authentic equipment, and verified single-line diagram (SLD) engineering designs."
+          )}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -67,13 +83,13 @@ export function WhyUsSection() {
 
         <div className="mt-12 text-center flex flex-wrap items-center justify-center gap-4">
           <Button variant="solar" href="/why-us" rightIcon={<ArrowRight className="h-4 w-4" />}>
-            Explore Our Quality Standards
+            {t("whyUs.exploreStandards", "Explore Our Quality Standards")}
           </Button>
           <Link
             href="/about"
             className="text-sm font-semibold text-slate-300 hover:text-white transition-colors"
           >
-            Meet Our Engineering Team →
+            {t("whyUs.meetTeam", "Meet Our Engineering Team →")}
           </Link>
         </div>
       </Container>
