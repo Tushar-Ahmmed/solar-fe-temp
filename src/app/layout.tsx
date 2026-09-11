@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { LanguageProvider } from "@/context/language-context";
-import { TopBar, Header, Footer, StickyActions } from "@/components/layout";
+import { TopBar, Header, Footer, StickyActions, LanguageMeta } from "@/components/layout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -117,6 +117,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <LanguageProvider>
+          <LanguageMeta />
           <TopBar />
           <Header />
           <main className="flex-1">{children}</main>

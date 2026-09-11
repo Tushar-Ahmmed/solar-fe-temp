@@ -70,3 +70,48 @@ export const mainNav = [
   { title: "About Us", href: "/about" },
   { title: "Contact", href: "/contact" },
 ];
+
+export const seoByLanguage = {
+  en: {
+    title: "SolarPower Bangladesh | Reliable Solar Energy Solutions",
+    description:
+      "Leading provider of high-efficiency solar panels, hybrid inverters, lithium batteries, and complete turnkey solar installations across Bangladesh.",
+    keywords: [
+      "solar energy Bangladesh",
+      "solar panels Dhaka",
+      "solar inverter price in Bangladesh",
+      "solar battery LiFePO4 Bangladesh",
+      "solar net metering DESCO DPDC BREB",
+      "industrial solar rooftop Bangladesh",
+      "residential solar system Bangladesh",
+      "solar system installation Bangladesh",
+      "solar accessories Dhaka",
+    ],
+    ogTitle: "SolarPower Bangladesh | Solar Energy Solutions for Homes & Businesses",
+    ogDescription:
+      "Cut electricity bills and improve energy independence with engineered solar systems designed for Bangladesh’s climate and grid conditions.",
+    schemaName: "SolarPower Bangladesh",
+    schemaAlternateName: "SolarPower Bangladesh Ltd.",
+  },
+  bn: {
+    title: "সোলার পাওয়ার বাংলাদেশ | নির্ভরযোগ্য সোলার শক্তির সমাধান",
+    description:
+      "বাংলাদেশের জন্য উচ্চদক্ষতার সোলার প্যানেল, হাইব্রিড ইনভার্টার, লিথিয়াম ব্যাটারি ও টার্নকি সোলার ইনস্টলেশন সমাধান প্রদানকারী শীর্ষ প্রতিষ্ঠান।",
+    keywords: [
+      "বাংলাদেশে সোলার প্যানেল",
+      "ঢাকার সোলার সিস্টেম",
+      "বাংলাদেশে সোলার ইনভার্টার দাম",
+      "লিথিয়াম ব্যাটারি বাংলাদেশ",
+      "নেট মিটারিং বাংলাদেশ",
+      "রুফটপ সোলার বাংলাদেশ",
+      "হোম সোলার সিস্টেম বাংলাদেশ",
+      "সোলার ইনস্টলেশন বাংলাদেশ",
+      "সোলার এক্সেসরিজ ঢাকা",
+    ],
+    ogTitle: "সোলার পাওয়ার বাংলাদেশ | ঘর ও ব্যবসার জন্য সোলার শক্তি",
+    ogDescription:
+      "বাংলাদেশের আবহাওয়া ও গ্রিডের জন্য ডিজাইন করা সোলার সিস্টেমে বিনিয়োগ করে বিদ্যুৎ খরচ কমান ও শক্তি নির্ভরতা বাড়ান।",
+    schemaName: "সোলার পাওয়ার বাংলাদেশ",
+    schemaAlternateName: "সোলার পাওয়ার বাংলাদেশ লিমিটেড",
+  },
+} as const;
