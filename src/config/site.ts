@@ -1,24 +1,24 @@
 import { CompanyConfig } from "@/types";
 
 export const siteConfig: CompanyConfig = {
-  name: "SolarPower Bangladesh",
+  name: "SolarPower BD",
   legalName: "SolarPower Bangladesh Ltd.",
   tagline: "Reliable Solar Energy Solutions for Homes, Businesses & Industries",
   shortDescription:
     "Leading provider of high-efficiency solar panels, hybrid inverters, lithium batteries, and complete turnkey solar installations across Bangladesh.",
   description:
-    "SolarPower Bangladesh delivers engineered solar energy systems for residential rooftops, commercial factories, agricultural pumps, and off-grid facilities across Bangladesh. Engineered for maximum efficiency and long-term reliability.",
+    "SolarPower BD delivers engineered solar energy systems for residential rooftops, commercial factories, agricultural pumps, and off-grid facilities across Bangladesh. Engineered for maximum efficiency and long-term reliability.",
   foundedYear: 2020,
   domain: "solarpowerbd.com",
   url: "https://solarpowerbd.com",
   email: "info@solarpowerbd.com",
   salesEmail: "sales@solarpowerbd.com",
   supportEmail: "support@solarpowerbd.com",
-  phone: "+880 1700-000000",
-  phoneRaw: "+8801700000000",
-  whatsapp: "+880 1700-000000",
-  whatsappRaw: "8801700000000",
-  emergencyPhone: "+880 1800-000000",
+  phone: "+880 1783001045",
+  phoneRaw: "+8801783001045",
+  whatsapp: "+880 1783001045",
+  whatsappRaw: "8801783001045",
+  emergencyPhone: "+880 1931329111",
   address: {
     street: "House #12, Road #04, Block-B",
     area: "Banani",
