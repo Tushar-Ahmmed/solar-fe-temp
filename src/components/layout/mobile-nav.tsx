@@ -6,12 +6,27 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Phone, MessageSquare, Sun, ChevronRight } from "lucide-react";
 import { siteConfig, mainNav } from "@/config/site";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
+import { useLanguage } from "@/context/language-context";
+import { TranslationKey } from "@/lib/i18n/translations";
 import { Button } from "@/components/ui/button";
+import { LanguageToggle } from "./language-toggle";
+
+const navKeyMap: Record<string, TranslationKey> = {
+  "/": "nav.home",
+  "/products": "nav.products",
+  "/services": "nav.services",
+  "/why-solar": "nav.whySolar",
+  "/why-us": "nav.whyUs",
+  "/blog": "nav.blog",
+  "/about": "nav.about",
+  "/contact": "nav.contact",
+};
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const whatsappUrl = generateWhatsAppLink();
+  const { t } = useLanguage();
 
   // Close menu on route change
   useEffect(() => {
@@ -34,7 +49,11 @@ export function MobileNav() {
     <div className="lg:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? "Close Menu" : "Open Menu"}
+        aria-label={
+          isOpen
+            ? t("mobile.closeMenu", "Close menu")
+            : t("header.mobileMenuToggle", "Toggle menu")
+        }
         className="p-2 text-slate-700 hover:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg"
       >
         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -69,17 +88,22 @@ export function MobileNav() {
                 {siteConfig.name}
               </span>
               <span className="text-[10px] text-slate-500 font-medium">
-                Engineering Solar Solutions
+                {t("mobile.subtitle", "Engineering Solar Solutions")}
               </span>
             </div>
           </Link>
           <button
             onClick={() => setIsOpen(false)}
-            aria-label="Close navigation drawer"
+            aria-label={t("mobile.closeMenu", "Close menu")}
             className="p-2 text-slate-500 hover:text-slate-900 rounded-lg"
           >
             <X className="h-5 w-5" />
           </button>
+        </div>
+
+        {/* In-drawer Language Switcher */}
+        <div className="p-4 border-b border-slate-100 bg-slate-50/50">
+          <LanguageToggle variant="mobile" />
         </div>
 
         {/* Drawer Navigation Links */}
@@ -89,6 +113,10 @@ export function MobileNav() {
               item.href === "/"
                 ? pathname === "/"
                 : pathname.startsWith(item.href);
+
+            const translatedLabel = navKeyMap[item.href]
+              ? t(navKeyMap[item.href], item.title)
+              : item.title;
 
             return (
               <Link
@@ -100,7 +128,7 @@ export function MobileNav() {
                     : "text-slate-700 hover:bg-slate-50 hover:text-sky-600"
                 }`}
               >
-                <span>{item.title}</span>
+                <span>{translatedLabel}</span>
                 <ChevronRight className={`h-4 w-4 ${isActive ? "text-sky-600" : "text-slate-400"}`} />
               </Link>
             );
@@ -109,26 +137,29 @@ export function MobileNav() {
 
         {/* Drawer Footer / Quick Actions */}
         <div className="p-4 border-t border-slate-100 bg-slate-50 space-y-2.5">
-          <div className="text-xs text-slate-500 mb-1">Direct Assistance</div>
+          <div className="text-xs text-slate-500 mb-1">
+            {t("mobile.directAssistance", "Direct Assistance")}
+          </div>
           <Button
             variant="whatsapp"
             href={whatsappUrl}
-            className="w-full justify-center"
+            className="w-full justify-center font-semibold"
             leftIcon={<MessageSquare className="h-4 w-4" />}
           >
-            Chat on WhatsApp
+            {t("header.chatWhatsApp", "WhatsApp")}
           </Button>
 
           <Button
             variant="outline"
             href={`tel:${siteConfig.phoneRaw}`}
-            className="w-full justify-center text-slate-800"
+            className="w-full justify-center text-slate-800 font-semibold"
             leftIcon={<Phone className="h-4 w-4 text-sky-600" />}
           >
-            Call {siteConfig.phone}
+            {t("mobile.callUs", "Call")} {siteConfig.phone}
           </Button>
         </div>
       </div>
     </div>
   );
 }
+

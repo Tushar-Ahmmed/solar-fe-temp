@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import { LanguageProvider } from "@/context/language-context";
 import { TopBar, Header, Footer, StickyActions } from "@/components/layout";
 
 const inter = Inter({
@@ -115,11 +116,13 @@ export default function RootLayout({
         className="min-h-screen bg-slate-50 font-sans antialiased text-slate-900 selection:bg-sky-500 selection:text-white flex flex-col pb-16 lg:pb-0"
         suppressHydrationWarning
       >
-        <TopBar />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <StickyActions />
+        <LanguageProvider>
+          <TopBar />
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <StickyActions />
+        </LanguageProvider>
       </body>
     </html>
   );

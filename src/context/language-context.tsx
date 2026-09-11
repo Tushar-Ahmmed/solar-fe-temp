@@ -23,6 +23,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       const savedLang = localStorage.getItem(STORAGE_KEY) as Language;
       if (savedLang === "en" || savedLang === "bn") {
         setLanguageState(savedLang);
+        if (typeof document !== "undefined") {
+          document.documentElement.lang = savedLang;
+        }
       }
     } catch {
       // Ignore localStorage access issues in restricted contexts
@@ -34,6 +37,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setLanguageState(lang);
     try {
       localStorage.setItem(STORAGE_KEY, lang);
+      if (typeof document !== "undefined") {
+        document.documentElement.lang = lang;
+      }
     } catch {
       // Ignore
     }
