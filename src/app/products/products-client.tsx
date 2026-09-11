@@ -10,8 +10,10 @@ import { Button } from "@/components/ui/button";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
 import { MessageSquare, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { useLanguage } from "@/context/language-context";
 
 export function ProductsClient() {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const filteredProducts =
@@ -27,13 +29,16 @@ export function ProductsClient() {
   return (
     <div className="py-8 sm:py-12 bg-slate-50 min-h-screen">
       <Container>
-        <Breadcrumbs items={[{ label: "Products" }]} />
+        <Breadcrumbs items={[{ label: t("breadcrumb.products", "Products") }]} />
 
         <div className="mt-4 mb-8">
           <SectionHeader
-            badge="Equipment Catalog"
-            title="Tier-1 Solar Panels, Inverters & Storage"
-            subtitle="Browse our comprehensive inventory of high-efficiency photovoltaic modules, smart hybrid inverters, and lithium storage solutions engineered for Bangladesh."
+            badge={t("product.catalogBadge", "Equipment Catalog")}
+            title={t("product.catalogTitle", "Tier-1 Solar Panels, Inverters & Storage")}
+            subtitle={t(
+              "product.catalogSubtitle",
+              "Browse our comprehensive inventory of high-efficiency photovoltaic modules, smart hybrid inverters, and lithium storage solutions engineered for Bangladesh."
+            )}
             align="left"
             className="mb-8"
           />
@@ -55,15 +60,19 @@ export function ProductsClient() {
           </div>
         ) : (
           <div className="p-12 text-center bg-white rounded-2xl border border-slate-200">
-            <h3 className="text-lg font-bold text-slate-800">No products found in this category</h3>
-            <p className="text-sm text-slate-500 mt-1">Please select another category or check back later.</p>
+            <h3 className="text-lg font-bold text-slate-800">
+              {t("product.noProductsFound", "No products found in this category")}
+            </h3>
+            <p className="text-sm text-slate-500 mt-1">
+              {t("product.noProductsHint", "Please select another category or check back later.")}
+            </p>
             <Button
               variant="outline"
               size="sm"
               onClick={() => setSelectedCategory("all")}
               className="mt-4"
             >
-              View All Products
+              {t("product.viewAllProducts", "View All Products")}
             </Button>
           </div>
         )}
@@ -72,13 +81,16 @@ export function ProductsClient() {
         <div className="mt-16 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 p-8 sm:p-10 text-white border border-slate-800 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
             <span className="text-xs uppercase tracking-wider text-amber-400 font-bold">
-              Engineering Sizing Consultation
+              {t("product.consultationBadge", "Engineering Sizing Consultation")}
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-white">
-              Not sure which capacity or inverter model you need?
+              {t("product.consultationTitle", "Not sure which capacity or inverter model you need?")}
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
-              Our electrical engineers will calculate your daily kilowatt-hour consumption and recommend the optimal panel and inverter combination.
+              {t(
+                "product.consultationDesc",
+                "Our electrical engineers will calculate your daily kilowatt-hour consumption and recommend the optimal panel and inverter combination."
+              )}
             </p>
           </div>
 
@@ -90,7 +102,7 @@ export function ProductsClient() {
               className="w-full sm:w-auto text-xs justify-center"
               leftIcon={<MessageSquare className="h-4 w-4" />}
             >
-              Ask on WhatsApp
+              {t("product.askOnWhatsApp", "Ask on WhatsApp")}
             </Button>
             <Button
               variant="outline"
@@ -99,7 +111,7 @@ export function ProductsClient() {
               className="w-full sm:w-auto text-xs justify-center text-slate-200 border-slate-700 hover:bg-slate-800"
               leftIcon={<Phone className="h-4 w-4 text-sky-400" />}
             >
-              Call: {siteConfig.phone}
+              {t("product.callHotline", "Call:")} {siteConfig.phone}
             </Button>
           </div>
         </div>

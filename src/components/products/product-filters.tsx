@@ -3,6 +3,7 @@
 import React from "react";
 import { productCategories } from "@/data/categories";
 import { ProductCategory } from "@/types";
+import { useLanguage } from "@/context/language-context";
 
 interface ProductFiltersProps {
   selectedCategory: string;
@@ -15,8 +16,9 @@ export function ProductFilters({
   onSelectCategory,
   totalProductsCount,
 }: ProductFiltersProps) {
+  const { t } = useLanguage();
   return (
-    <div className="flex items-center gap-2 overflow-x-auto pb-3 pt-1 scrollbar-none" role="group" aria-label="Filter products by category">
+    <div className="flex items-center gap-2 overflow-x-auto pb-3 pt-1 scrollbar-none" role="group" aria-label={t("product.filterAll", "Filter products by category")}>
       <button
         type="button"
         onClick={() => onSelectCategory("all")}
@@ -27,7 +29,7 @@ export function ProductFilters({
             : "bg-white text-slate-700 border border-slate-200 hover:border-slate-300 hover:bg-slate-50"
         }`}
       >
-        All Products ({totalProductsCount})
+        {t("product.filterAll", "All Products")} ({totalProductsCount})
       </button>
 
       {productCategories.map((cat) => {

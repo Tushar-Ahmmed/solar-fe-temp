@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,12 +9,14 @@ import { generateWhatsAppLink } from "@/lib/whatsapp";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/language-context";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { t } = useLanguage();
   const productWhatsAppUrl = generateWhatsAppLink({
     productName: product.name,
     productModel: product.modelNumber,
@@ -63,13 +67,19 @@ export function ProductCard({ product }: ProductCardProps) {
           {product.keySpecs.efficiency && (
             <div className="flex items-center gap-1.5 text-slate-700">
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-              <span className="font-semibold truncate">Eff: {product.keySpecs.efficiency}</span>
+              <span className="font-semibold truncate">
+                {t("product.efficiencyLabel", "Eff:")}{" "}
+                {product.keySpecs.efficiency}
+              </span>
             </div>
           )}
           {product.keySpecs.warrantyYears && (
             <div className="flex items-center gap-1.5 text-slate-700 col-span-2">
               <ShieldCheck className="h-3.5 w-3.5 text-sky-500 shrink-0" />
-              <span>{product.keySpecs.warrantyYears}-Year Manufacturer Warranty</span>
+              <span>
+                {product.keySpecs.warrantyYears}-{t("product.warrantyYearsUnit", "Year")}{" "}
+                {t("product.warranty", "Manufacturer Warranty")}
+              </span>
             </div>
           )}
         </div>
@@ -83,7 +93,7 @@ export function ProductCard({ product }: ProductCardProps) {
             className="w-full text-xs justify-center"
             rightIcon={<ArrowRight className="h-3.5 w-3.5" />}
           >
-            Specs
+            {t("product.specsBtn", "Specs")}
           </Button>
           <Button
             variant="whatsapp"
@@ -92,7 +102,7 @@ export function ProductCard({ product }: ProductCardProps) {
             className="w-full text-xs justify-center"
             leftIcon={<MessageSquare className="h-3.5 w-3.5" />}
           >
-            Inquire
+            {t("product.inquireBtn", "Inquire")}
           </Button>
         </div>
       </CardContent>

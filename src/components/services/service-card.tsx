@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +8,7 @@ import { Service } from "@/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/context/language-context";
 
 interface ServiceCardProps {
   service: Service;
@@ -20,6 +23,7 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export function ServiceCard({ service }: ServiceCardProps) {
+  const { t } = useLanguage();
   return (
     <Card hoverable className="flex flex-col overflow-hidden bg-white border-slate-200 shadow-xs h-full">
       <div className="relative aspect-16/9 w-full bg-slate-900 overflow-hidden">
@@ -36,7 +40,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
         {service.isFeatured && (
           <div className="absolute top-3.5 right-3.5">
             <Badge variant="solar" size="sm" className="font-bold shadow-xs">
-              Popular Solution
+              {t("service.popularSolution", "Popular Solution")}
             </Badge>
           </div>
         )}
@@ -55,7 +59,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
         {/* Target Audience Badges */}
         <div className="space-y-2">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-            Recommended For:
+            {t("service.recommendedFor", "Recommended For:")}
           </span>
           <div className="flex flex-wrap gap-1.5">
             {service.targetAudience.slice(0, 3).map((audience, idx) => (
@@ -72,7 +76,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
         {/* Core Benefits Preview */}
         <div className="space-y-2 pt-4 border-t border-slate-100">
           <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-            Key Advantages:
+            {t("service.keyAdvantages", "Key Advantages:")}
           </span>
           <ul className="space-y-1.5 text-xs text-slate-700">
             {service.benefits.slice(0, 3).map((benefit, idx) => (
@@ -93,7 +97,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
             className="w-full justify-center group"
             rightIcon={<ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />}
           >
-            Explore Engineering Scope & Process
+            {t("service.exploreProcess", "Explore Engineering Scope & Process")}
           </Button>
         </div>
       </CardContent>

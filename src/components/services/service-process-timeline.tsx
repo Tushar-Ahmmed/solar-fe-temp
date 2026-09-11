@@ -1,12 +1,16 @@
+"use client";
+
 import React from "react";
 import { ServiceProcessStep } from "@/types";
 import { CheckCircle } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 interface ServiceProcessTimelineProps {
   steps: ServiceProcessStep[];
 }
 
 export function ServiceProcessTimeline({ steps }: ServiceProcessTimelineProps) {
+  const { t } = useLanguage();
   return (
     <div className="relative">
       {/* Desktop connecting line */}
@@ -31,7 +35,7 @@ export function ServiceProcessTimeline({ steps }: ServiceProcessTimelineProps) {
                 </h3>
                 <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
                   <CheckCircle className="h-3 w-3" />
-                  Engineering Milestone
+                  {t("service.engineeringMilestone", "Engineering Milestone")}
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">

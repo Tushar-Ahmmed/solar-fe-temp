@@ -1,11 +1,16 @@
+"use client";
+
 import React from "react";
 import { ProductSpecItem } from "@/types";
+import { useLanguage } from "@/context/language-context";
 
 interface ProductSpecsTableProps {
   specifications: ProductSpecItem[];
 }
 
 export function ProductSpecsTable({ specifications }: ProductSpecsTableProps) {
+  const { t } = useLanguage();
+
   // Group specifications by group
   const groupedSpecs = specifications.reduce<Record<string, ProductSpecItem[]>>(
     (acc, spec) => {
@@ -25,7 +30,7 @@ export function ProductSpecsTable({ specifications }: ProductSpecsTableProps) {
         <div key={groupName} className="rounded-xl border border-slate-200 overflow-hidden bg-white">
           <div className="bg-slate-100/80 px-4 py-2.5 border-b border-slate-200">
             <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700">
-              {groupName} Specifications
+              {groupName} {t("product.technicalSpecs", "Specifications")}
             </h4>
           </div>
           <div className="divide-y divide-slate-100 text-xs sm:text-sm">
