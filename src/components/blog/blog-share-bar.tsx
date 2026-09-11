@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { MessageSquare, Share2, Check, Copy } from "lucide-react";
 import { generateWhatsAppLink } from "@/lib/whatsapp";
 import { siteConfig } from "@/config/site";
+import { useLanguage } from "@/context/language-context";
 
 interface BlogShareBarProps {
   articleTitle: string;
@@ -11,6 +12,7 @@ interface BlogShareBarProps {
 }
 
 export function BlogShareBar({ articleTitle, slug }: BlogShareBarProps) {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
   const articleUrl = `${siteConfig.url}/blog/${slug}`;
 
@@ -52,14 +54,14 @@ export function BlogShareBar({ articleTitle, slug }: BlogShareBarProps) {
         className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow-xs transition-all hover:shadow-md cursor-pointer"
       >
         <MessageSquare className="h-4 w-4 text-emerald-100" />
-        <span>Ask Engineer About This Guide</span>
+        <span>{t("blog.askEngineerGuide", "Ask Engineer About This Guide")}</span>
       </a>
 
       {/* Social Sharing Actions */}
       <div className="flex items-center justify-end gap-2 text-xs text-slate-600">
         <span className="hidden sm:inline-flex items-center gap-1 font-semibold text-slate-500 mr-1">
           <Share2 className="h-3.5 w-3.5" />
-          Share:
+          {t("blog.shareArticle", "Share:")}
         </span>
 
         {/* Facebook */}
@@ -99,12 +101,12 @@ export function BlogShareBar({ articleTitle, slug }: BlogShareBarProps) {
           {copied ? (
             <>
               <Check className="h-3.5 w-3.5 text-emerald-600" />
-              <span>Copied!</span>
+              <span>{t("ui.copied", "Copied!")}</span>
             </>
           ) : (
             <>
               <Copy className="h-3.5 w-3.5 text-slate-500" />
-              <span>Copy Link</span>
+              <span>{t("form.copyText", "Copy Link")}</span>
             </>
           )}
         </button>

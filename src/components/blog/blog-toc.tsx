@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { List, ChevronDown, ChevronUp } from "lucide-react";
 import { slugifyHeading } from "./blog-content-renderer";
+import { useLanguage } from "@/context/language-context";
 
 interface TOCItem {
   id: string;
@@ -15,6 +16,7 @@ interface BlogTOCProps {
 }
 
 export function BlogTOC({ content }: BlogTOCProps) {
+  const { t } = useLanguage();
   const [headings, setHeadings] = useState<TOCItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(true);
@@ -77,9 +79,9 @@ export function BlogTOC({ content }: BlogTOCProps) {
       >
         <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
           <List className="h-4 w-4 text-sky-600" />
-          <span>Table of Contents</span>
+          <span>{t("blog.tableOfContents", "Table of Contents")}</span>
           <span className="text-xs font-normal text-slate-500">
-            ({headings.length} sections)
+            ({headings.length} {t("blog.sectionsCount", "sections")})
           </span>
         </div>
         <div className="text-slate-400 group-hover:text-slate-700 transition-colors">
@@ -88,7 +90,7 @@ export function BlogTOC({ content }: BlogTOCProps) {
       </button>
 
       {isOpen && (
-        <nav className="mt-3.5 pt-3.5 border-t border-slate-200/80 space-y-1.5" aria-label="Table of Contents">
+        <nav className="mt-3.5 pt-3.5 border-t border-slate-200/80 space-y-1.5" aria-label={t("blog.tableOfContents", "Table of Contents")}>
           {headings.map((h) => (
             <a
               key={h.id}

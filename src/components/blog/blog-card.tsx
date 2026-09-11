@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,12 +8,15 @@ import { BlogArticle } from "@/types";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 
 interface BlogCardProps {
   article: BlogArticle;
 }
 
 export function BlogCard({ article }: BlogCardProps) {
+  const { t } = useLanguage();
+
   return (
     <Card hoverable className="flex flex-col overflow-hidden bg-white border-slate-200 shadow-xs h-full group">
       {/* Thumbnail */}
@@ -41,7 +46,7 @@ export function BlogCard({ article }: BlogCardProps) {
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="h-3.5 w-3.5 text-slate-400" />
-              {article.readingTimeMinutes} min read
+              {article.readingTimeMinutes} {t("blog.readingTime", "min read")}
             </span>
           </div>
 
@@ -72,7 +77,7 @@ export function BlogCard({ article }: BlogCardProps) {
             href={`/blog/${article.slug}`}
             className="text-xs font-bold text-sky-600 group-hover:text-sky-700 inline-flex items-center gap-1 transition-colors"
           >
-            Read <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            {t("common.read", "Read")} <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </CardContent>
