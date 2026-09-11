@@ -33,7 +33,9 @@ interface ArticleDetailClientProps {
 }
 
 export function ArticleDetailClient({ article, relatedArticles }: ArticleDetailClientProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const articleTitle = language === "bn" ? article.title_bn || article.title_en || article.title : article.title_en || article.title;
+  const articleExcerpt = language === "bn" ? article.excerpt_bn || article.excerpt_en || article.excerpt : article.excerpt_en || article.excerpt;
 
   return (
     <div className="py-8 sm:py-12 bg-slate-50 min-h-screen">
@@ -42,7 +44,7 @@ export function ArticleDetailClient({ article, relatedArticles }: ArticleDetailC
         <Breadcrumbs
           items={[
             { label: t("breadcrumb.blog", "Solar Guide"), href: "/blog" },
-            { label: article.title },
+            { label: articleTitle },
           ]}
         />
 
@@ -67,11 +69,11 @@ export function ArticleDetailClient({ article, relatedArticles }: ArticleDetailC
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              {article.title}
+              {articleTitle}
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
-              {article.excerpt}
+              {articleExcerpt}
             </p>
           </div>
 
@@ -79,7 +81,7 @@ export function ArticleDetailClient({ article, relatedArticles }: ArticleDetailC
           <div className="relative aspect-16/9 w-full rounded-2xl overflow-hidden bg-slate-900 shadow-md">
             <Image
               src={article.image}
-              alt={article.imageAlt || article.title}
+              alt={article.imageAlt || articleTitle}
               fill
               priority
               className="object-cover"
@@ -148,7 +150,7 @@ export function ArticleDetailClient({ article, relatedArticles }: ArticleDetailC
 
           {/* Bottom Share Bar */}
           <div className="pt-2">
-            <BlogShareBar articleTitle={article.title} slug={article.slug} />
+            <BlogShareBar articleTitle={articleTitle} slug={article.slug} />
           </div>
 
           {/* Related Articles */}

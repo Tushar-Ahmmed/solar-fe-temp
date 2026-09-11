@@ -12,7 +12,7 @@ import { CTABanner } from "@/components/home/cta-banner";
 import { useLanguage } from "@/context/language-context";
 
 function BlogFilterContent() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "All";
 
@@ -39,12 +39,14 @@ function BlogFilterContent() {
   ];
 
   const filteredArticles = blogArticles.filter((article) => {
+    const localizedTitle = language === "bn" ? article.title_bn || article.title_en || article.title : article.title_en || article.title;
+    const localizedExcerpt = language === "bn" ? article.excerpt_bn || article.excerpt_en || article.excerpt : article.excerpt_en || article.excerpt;
     const matchesCategory =
       selectedCategory === "All" ||
       article.category.toLowerCase() === selectedCategory.toLowerCase();
     const matchesSearch =
-      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      localizedTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      localizedExcerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
       article.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return matchesCategory && matchesSearch;

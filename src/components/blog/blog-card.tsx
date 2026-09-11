@@ -15,7 +15,9 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ article }: BlogCardProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const title = language === "bn" ? article.title_bn || article.title_en || article.title : article.title_en || article.title;
+  const excerpt = language === "bn" ? article.excerpt_bn || article.excerpt_en || article.excerpt : article.excerpt_en || article.excerpt;
 
   return (
     <Card hoverable className="flex flex-col overflow-hidden bg-white border-slate-200 shadow-xs h-full group">
@@ -23,14 +25,14 @@ export function BlogCard({ article }: BlogCardProps) {
       <div className="relative aspect-16/9 w-full bg-slate-900 overflow-hidden">
         <Image
           src={article.image}
-          alt={article.imageAlt || article.title}
+          alt={article.imageAlt || title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute top-3.5 left-3.5">
           <Badge variant="primary" size="sm" className="font-bold shadow-xs">
-            {article.category}
+            {language === "bn" ? article.category : article.category}
           </Badge>
         </div>
       </div>
@@ -52,12 +54,12 @@ export function BlogCard({ article }: BlogCardProps) {
 
           {/* Title */}
           <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors leading-snug">
-            <Link href={`/blog/${article.slug}`}>{article.title}</Link>
+            <Link href={`/blog/${article.slug}`}>{title}</Link>
           </h3>
 
           {/* Excerpt */}
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
-            {article.excerpt}
+            {excerpt}
           </p>
         </div>
 

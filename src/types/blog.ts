@@ -7,6 +7,10 @@ export interface BlogAuthor {
 export interface BlogArticle {
   id: string;
   slug: string;
+  title_en?: string;
+  title_bn?: string;
+  excerpt_en?: string;
+  excerpt_bn?: string;
   title: string;
   excerpt: string;
   content: string; // Markdown or structured text

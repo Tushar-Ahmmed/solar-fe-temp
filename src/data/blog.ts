@@ -4,6 +4,12 @@ export const blogArticles: BlogArticle[] = [
   {
     id: "post-on-grid-vs-off-grid-vs-hybrid",
     slug: "on-grid-vs-off-grid-vs-hybrid-solar-system-bangladesh",
+    title_en: "On-Grid vs Off-Grid vs Hybrid Solar Systems in Bangladesh: Which One Should You Choose?",
+    title_bn: "বাংলাদেশে অন-গ্রিড, অফ-গ্রিড ও হাইব্রিড সোলার সিস্টেম: কোনটি আপনার জন্য সেরা?",
+    excerpt_en:
+      "A complete technical and financial comparison of grid-tied, standalone battery, and hybrid solar systems tailored to Bangladesh electricity grid conditions and power outages.",
+    excerpt_bn:
+      "বাংলাদেশের বিদ্যুতের অবস্থা ও লোডশেডিংয়ের প্রেক্ষাপটে অন-গ্রিড, অফ-গ্রিড ও হাইব্রিড সোলার সিস্টেমের প্রযুক্তিগত ও আর্থিক তুলনা।",
     title: "On-Grid vs Off-Grid vs Hybrid Solar Systems in Bangladesh: Which One Should You Choose?",
     excerpt:
       "A complete technical and financial comparison of grid-tied, standalone battery, and hybrid solar systems tailored to Bangladesh electricity grid conditions and power outages.",
@@ -74,6 +80,12 @@ If you are looking for pure cost savings with minimal maintenance, an **On-Grid 
   {
     id: "post-solar-net-metering-guide",
     slug: "how-solar-net-metering-works-in-bangladesh",
+    title_en: "How Solar Net Metering Works in Bangladesh: Guidelines, Tariff & Benefits",
+    title_bn: "বাংলাদেশে সোলার নেট-মিটারিং কীভাবে কাজ করে: গাইডলাইন, ট্যারিফ ও সুবিধা",
+    excerpt_en:
+      "A step-by-step guide explaining how Bangladeshi homeowners and industries can export surplus solar energy to DESCO, DPDC, BREB, or NESCO and lower their monthly bills.",
+    excerpt_bn:
+      "বাংলাদেশের ঘরোয়া ও শিল্প প্রতিষ্ঠান কীভাবে অতিরিক্ত সৌরবিদ্যুৎ ডেসকো, ডিপিডিসি, ব্রেব বা নেসকোতে পাঠিয়ে মাসিক বিদ্যুৎ বিল কমাতে পারে—এমন ধাপে ধাপে গাইড।",
     title: "How Solar Net Metering Works in Bangladesh: Guidelines, Tariff & Benefits",
     excerpt:
       "A step-by-step guide explaining how Bangladeshi homeowners and industries can export surplus solar energy to DESCO, DPDC, BREB, or NESCO and lower their monthly bills.",
@@ -128,6 +140,12 @@ SolarPower Bangladesh handles the complete end-to-end net metering process — f
   {
     id: "post-solar-panel-home-sizing",
     slug: "how-many-solar-panels-needed-for-home-bangladesh",
+    title_en: "How Many Solar Panels Do You Need for a Home in Bangladesh? Sizing Calculator Guide",
+    title_bn: "বাংলাদেশে ঘরের জন্য কতটি সোলার প্যানেল লাগবে? সাইজিং ক্যালকুলেটর গাইড",
+    excerpt_en:
+      "Learn how to calculate the exact solar panel capacity, inverter size, and battery backup required for your household appliances.",
+    excerpt_bn:
+      "আপনার বাড়ির বৈদ্যুতিক লোডের ভিত্তিতে সঠিক সোলার প্যানেল ক্যাপাসিটি, ইনভার্টার সাইজ ও ব্যাটারি ব্যাকআপ কিভাবে নির্ধারণ করবেন তা জেনে নিন।",
     title: "How Many Solar Panels Do You Need for a Home in Bangladesh? Sizing Calculator Guide",
     excerpt:
       "Learn how to calculate the exact solar panel capacity, inverter size, and battery backup required for your household appliances.",
@@ -188,6 +206,12 @@ Contact SolarPower Bangladesh for a free customized 3D rooftop survey and precis
   {
     id: "post-lithium-vs-tubular-battery",
     slug: "lithium-vs-tubular-battery-for-solar-bangladesh",
+    title_en: "LiFePO4 Lithium vs Deep Cycle Tubular Gel Batteries: Which is Better for Solar in Bangladesh?",
+    title_bn: "LiFePO4 লিথিয়াম বনাম টিউবুলার জেল ব্যাটারি: বাংলাদেশে সোলারের জন্য কোনটি ভালো?",
+    excerpt_en:
+      "A realistic comparison of lithium iron phosphate and lead-acid tubular batteries focusing on cycle life, depth of discharge, temperature tolerance, and total cost of ownership.",
+    excerpt_bn:
+      "সাইকেল লাইফ, ডিপথ অব ডিসচার্জ, তাপমাত্রা সহনশীলতা ও মোট খরচের দৃষ্টিকোণ থেকে লিথিয়াম ও টিউবুলার ব্যাটারির বাস্তব তুলনা।",
     title: "LiFePO4 Lithium vs Deep Cycle Tubular Gel Batteries: Which is Better for Solar in Bangladesh?",
     excerpt:
       "A realistic comparison of lithium iron phosphate and lead-acid tubular batteries focusing on cycle life, depth of discharge, temperature tolerance, and total cost of ownership.",
@@ -236,6 +260,12 @@ While Lithium batteries have a higher initial purchase price, replacing 3 to 4 s
   {
     id: "post-commercial-solar-factories",
     slug: "commercial-solar-rooftop-benefits-for-factories",
+    title_en: "Why RMG & Textile Factories in Bangladesh Are Rapidly Transitioning to Rooftop Solar",
+    title_bn: "বাংলাদেশের আরএমজি ও টেক্সটাইল কারখানাগুলো কেন দ্রুত ছাদে সোলার বসাচ্ছে?",
+    excerpt_en:
+      "How commercial rooftop solar helps Bangladeshi factories combat rising gas and power tariffs while satisfying international green building (LEED) buyer requirements.",
+    excerpt_bn:
+      "বাংলাদেশের কারখানাগুলো কীভাবে ছাদে সোলার বসিয়ে বিদ্যুৎ খরচ কমিয়ে এবং LEED-ভিত্তিক আন্তর্জাতিক চাহিদা পূরণ করছে তা জানুন।",
     title: "Why RMG & Textile Factories in Bangladesh Are Rapidly Transitioning to Rooftop Solar",
     excerpt:
       "How commercial rooftop solar helps Bangladeshi factories combat rising gas and power tariffs while satisfying international green building (LEED) buyer requirements.",
@@ -278,6 +308,12 @@ SolarPower Bangladesh provides turnkey EPC execution with industrial-grade safet
   {
     id: "post-solar-inverter-guide",
     slug: "solar-inverter-buying-guide-bangladesh",
+    title_en: "Complete Solar Inverter Buying Guide for Bangladesh: String vs Hybrid vs Micro Inverters",
+    title_bn: "বাংলাদেশের জন্য সম্পূর্ণ সোলার ইনভার্টার কেনার গাইড: স্ট্রিং বনাম হাইব্রিড বনাম মাইক্রো ইনভার্টার",
+    excerpt_en:
+      "Understand the technical differences between On-Grid String, Smart Hybrid, and Microinverters. How to match inverter capacity with Bangladesh voltage fluctuations.",
+    excerpt_bn:
+      "অন-গ্রিড স্ট্রিং, স্মার্ট হাইব্রিড ও মাইক্রোইনভার্টারের পার্থক্য বুঝুন এবং বাংলাদেশে ভোল্টেজ ওঠানামার সাথে মিল রেখে সঠিক সাইজ বেছে নিন।",
     title: "Complete Solar Inverter Buying Guide for Bangladesh: String vs Hybrid vs Micro Inverters",
     excerpt:
       "Understand the technical differences between On-Grid String, Smart Hybrid, and Microinverters. How to match inverter capacity with Bangladesh voltage fluctuations.",
@@ -334,6 +370,12 @@ Consult SolarPower Bangladesh for certified hybrid inverters engineered with Ban
   {
     id: "post-solar-maintenance-cleaning",
     slug: "solar-panel-maintenance-cleaning-guide",
+    title_en: "Solar Panel Maintenance & Cleaning in Bangladesh: How to Prevent Output Loss & Hotspots",
+    title_bn: "বাংলাদেশে সোলার প্যানেল রক্ষণাবেক্ষণ ও পরিষ্কার পরিচ্ছন্নতা: আউটপুট কমা ও হটস্পট কীভাবে রোধ করবেন",
+    excerpt_en:
+      "Dust, air pollution, and bird droppings can decrease solar generation by up to 25% in Dhaka and industrial zones. Learn professional cleaning best practices.",
+    excerpt_bn:
+      "ঢাকা ও শিল্পাঞ্চলে ধুলো, দূষণ ও পাখির মল সোলার উৎপাদন ২৫% পর্যন্ত কমিয়ে দিতে পারে। সঠিক পরিষ্কারের পদ্ধতি জেনে নিন।",
     title: "Solar Panel Maintenance & Cleaning in Bangladesh: How to Prevent Output Loss & Hotspots",
     excerpt:
       "Dust, air pollution, and bird droppings can decrease solar generation by up to 25% in Dhaka and industrial zones. Learn professional cleaning best practices.",
@@ -385,6 +427,12 @@ SolarPower Bangladesh offers preventative O&M cleaning and thermal infrared dron
   {
     id: "post-common-solar-mistakes",
     slug: "common-solar-mistakes-bangladesh",
+    title_en: "7 Costly Solar Installation Mistakes to Avoid in Bangladesh",
+    title_bn: "বাংলাদেশে সোলার ইনস্টলেশনের ৭টি ব্যয়বহুল ভুল কী কী, কীভাবে এড়ানো যায়",
+    excerpt_en:
+      "From undersized DC cables to low-grade painted steel stands that rust in monsoon rains, discover the most critical mistakes to steer clear of.",
+    excerpt_bn:
+      "খাটো DC কেবল থেকে শুরু করে বর্ষায় মরিচা ধরে যাওয়া নিম্নমানের স্টিল স্ট্যান্ড—সবচেয়ে বড় ভুলগুলো এড়িয়ে কীভাবে সিস্টেম সুরক্ষিত রাখবেন তা জানুন।",
     title: "7 Costly Solar Installation Mistakes to Avoid in Bangladesh",
     excerpt:
       "From undersized DC cables to low-grade painted steel stands that rust in monsoon rains, discover the most critical mistakes to steer clear of.",
@@ -440,6 +488,19 @@ Avoid these costly mistakes by partnering with licensed IEB engineers at SolarPo
     },
   },
 ];
+
+export function getLocalizedArticleText(
+  article: BlogArticle,
+  lang: "en" | "bn",
+  field: "title" | "excerpt" = "title"
+): string {
+  const key = field === "title" ? (lang === "bn" ? "title_bn" : "title_en") : lang === "bn" ? "excerpt_bn" : "excerpt_en";
+  const value = article[key as keyof BlogArticle];
+  if (typeof value === "string" && value.trim()) {
+    return value;
+  }
+  return field === "title" ? article.title : article.excerpt;
+}
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
   return blogArticles.find((a) => a.slug === slug);
