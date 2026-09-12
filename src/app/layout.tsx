@@ -113,7 +113,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-screen bg-slate-50 font-sans antialiased text-slate-900 selection:bg-sky-500 selection:text-white flex flex-col pb-16 lg:pb-0"
+        className="min-h-screen bg-slate-50 font-sans antialiased text-slate-900 selection:bg-sky-500 selection:text-white flex flex-col"
         suppressHydrationWarning
       >
         <LanguageProvider>

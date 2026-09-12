@@ -30,7 +30,7 @@ export function Header() {
   const { t } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-30 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+    <header className="lg:sticky top-0 z-30 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       <Container className="flex h-16 sm:h-20 items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group">
