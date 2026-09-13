@@ -70,7 +70,7 @@ export function MobileNav() {
       {/* Slide-out Drawer */}
       <div
         aria-hidden={!isOpen}
-        className={`fixed inset-0 z-50 h-[100dvh] w-full bg-white shadow-2xl transition-transform duration-300 ease-in-out transform flex flex-col ${
+        className={`fixed inset-y-0 right-0 z-50 h-[100dvh] w-full max-w-full bg-white shadow-2xl transition-transform duration-300 ease-in-out transform flex flex-col ${
           isOpen ? "translate-x-0" : "translate-x-full pointer-events-none invisible"
         }`}
       >
